@@ -35,6 +35,13 @@ func (h *httpRequest) Get() ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
+//发送json数据的其它方式
+// song := make(map[string]interface{})
+// song["name"] = "李白"
+// bytesData, err := json.Marshal(song)
+// reader := bytes.NewReader(bytesData)
+// http.NewRequest("POST", h.url, reader)
+
 func (h *httpRequest) Post() ([]byte, error) {
 	resquest, err := http.NewRequest("POST", h.url, bytes.NewReader([]byte(h.data)))
 	if err != nil {
